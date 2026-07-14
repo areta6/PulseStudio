@@ -1,5 +1,12 @@
 import song from "../data/dummySong.json";
 
+function formatTime(seconds: number): string {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+
+    return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+}
+
 function ProgressBar() {
     const progress =
         (song.currentTime / song.duration) * 100;
@@ -10,7 +17,7 @@ function ProgressBar() {
             <div className="progress-container">
 
                 <span>
-                    {song.currentTime}s
+                    {formatTime(song.currentTime)}
                 </span>
 
                 <div className="progress-background">
@@ -23,7 +30,7 @@ function ProgressBar() {
                 </div>
 
                 <span>
-                    {song.duration}s
+                    {formatTime(song.duration)}
                 </span>
 
             </div>
